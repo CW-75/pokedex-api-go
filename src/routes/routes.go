@@ -1,11 +1,18 @@
 package routes
 
 import (
+	"strconv"
+
 	"github.com/gin-gonic/gin"
 )
 
-func SetupRouter(port int) *gin.Engine {
+type RouterParams struct {
+	Addr string
+	Port int
+}
+
+func SetupRouter(params RouterParams) (err error) {
 	r := gin.Default()
-	SetDefaultRoute(r)
-	return r
+	setDefaultRoute(r)
+	return r.Run(params.Addr + ":" + strconv.Itoa(params.Port))
 }
