@@ -6,9 +6,6 @@ import (
 
 func SetupRouter(port int) *gin.Engine {
 	r := gin.Default()
-	r.GET("/", func(c *gin.Context) {
-		c.String(200, "Welcome to the PokeAPI")
-	})
-
+	SetDefaultRoute(r)
 	return r
 }
